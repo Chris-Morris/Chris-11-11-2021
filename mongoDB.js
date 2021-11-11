@@ -1,16 +1,18 @@
-const {MongoClient} = require('mongodb');
-const {password, database} = require('./config.js');
+const { MongoClient } = require('mongodb');
+const { password, database } = require('./config/config');
 
-async function main() {
+async function findProductById(id) {
     const uri = `mongodb+srv://intelistyle:${password}@intelistyle-challenge.ykzfk.mongodb.net/${database}?retryWrites=true&w=majority`;
 
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
     try {
         await client.connect();
-    
-        await listDatabases(client);
-     
+        const database = client.db("Intelistyle");
+        const collection = database.collection("Products");
+        const query = { product_id: parseInt(id) };
+        const product = await collection.findOne(query);
+        return product;
     } catch (e) {
         console.error(e);
     } finally {
@@ -18,11 +20,6 @@ async function main() {
     }
 }
 
-main();
-
-async function listDatabases(client){
-    databasesList = await client.db().admin().listDatabases();
- 
-    console.log("Databases:");
-    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
+module.exports = {
+    findProductById
 };
