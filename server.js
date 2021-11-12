@@ -1,10 +1,7 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const products = require('./routes/api/products');
-
-
 
 const app = express();
 
@@ -12,12 +9,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // DB Config
-const db = require("./config/keys").mongoURI;
-
-// Connect to Mongo
-mongoose.connect(db)
-    .then(() => console.log("MongoDB Connected..."))
-    .catch((e) => console.log(e));
+const db = require("./config/config").mongoURI;
 
 // Mount Router
 app.use('/api/products', products);

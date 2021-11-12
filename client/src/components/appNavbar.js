@@ -1,50 +1,66 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    Container,
-    Row,
-    Col
+    NavItem
 } from 'reactstrap';
+import '../css/navbar.css';
 
 class AppNavbar extends Component {
-    state = {
-        isOpen: false
-    }
-
-    toggle = () => {
-        this.setState({
-            isOpen: !this.state.isOpen
-        });
-    }
-
     render() {
         return (
-            <div>
-                <Navbar color="dark" dark expand="sm" className="mb-5">
-                    <Container>
-                        <NavbarBrand href="/">Products</NavbarBrand>
-
-                        <NavbarToggler onClick={this.toggle} />
-
-                        <Collapse isOpen={this.state.isOpen} navbar>
-                            <Nav className="ml-auto" navbar>
-                                <NavItem>
-                                    <NavLink href="https://google.com">Google</NavLink>
-                                </NavItem>
-                            </Nav>
-                        </Collapse>
-
-                    </Container>
-                </Navbar>
-            </div >
+            <div className="navbar">
+                <NavLink to="/" className="logo">Intelistyle</NavLink>
+                <nav
+                >
+                    <NavItem>
+                        <NavLink className="nav-text" activeClassName="selected-nav"
+                            to="/tshirts"
+                        >
+                            T-shirts
+                        </NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink className="nav-text" activeClassName="selected-nav" to="/jeans">
+                            Jeans
+                        </NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink className="nav-text" activeClassName="selected-nav"
+                            to="/hats"
+                        >
+                            Hats
+                        </NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink className="nav-text" activeClassName="selected-nav"
+                            to="/jumpers"
+                        >
+                            Jumpers
+                        </NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink className="nav-text" activeClassName="selected-nav"
+                            to="/shoes">
+                            Shoes
+                        </NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink className="nav-text" activeClassName="selected-nav"
+                            to="/socks"
+                        >
+                            Socks
+                        </NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink className="nav-text" activeClassName="selected-nav"
+                            to="/coats"
+                        >
+                            Coats
+                        </NavLink>
+                    </NavItem>
+                </nav>
+            </div>
         )
-
     }
 }
 
