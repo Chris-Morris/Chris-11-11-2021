@@ -177,7 +177,7 @@ const Home = () => {
                                 <Card>
                                     <CardBody style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", minHeight: "150px" }}>
                                         <CardText tag="h5">
-                                            {product.product_description.split("colour:")[0]}
+                                            {product.product_description.includes("PREMIUM QUALITY") ? product.product_description.split(". ")[1].split(".")[0] : product.product_description.split(".")[0]}
                                         </CardText>
                                         <CardText>
                                             <strong>£{product.price}</strong>
