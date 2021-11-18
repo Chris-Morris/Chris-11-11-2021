@@ -40,6 +40,7 @@ const Home = () => {
         return (
             <div style={{ width: "90%", margin: "auto", display: "flex", flexDirection: "column", alignItems: "center" }}>
                 <div style={{ minWidth: "80%", display: "flex", justifyContent: "center" }}>
+                    <h1>Hello?!</h1>
                     <Form>
                         <Row>
                             <Col>
